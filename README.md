@@ -4,45 +4,59 @@ A Claude Code plugin that tells you whether a startup idea, or a business you wa
 
 Give it an idea or a listing link. Claude researches the market on the web and scores it on ten factors: urgency, market size, pricing potential, acquisition cost, delivery cost, uniqueness, speed, upfront investment, upsell potential and evergreen potential. Every score has a reason and a source link. The report opens in a pane beside the chat.
 
-## Install
+## Installation
 
-**Full plugin, with the pane (Claude Code).** In a Claude Code terminal session:
-
-```
-/plugin install dealcheck --marketplace vsheshjain/dealcheck
-```
-
-Answer `y` to add the marketplace, then pick the **user** scope to have it in every project. Run it as `/dealcheck:dealcheck`.
-
-**Skill only, any agent (no pane).** The skill is one file, `skills/dealcheck/SKILL.md`, in the open Agent Skills format. Install it globally for the agents you use:
-
-```
-URL=https://raw.githubusercontent.com/vsheshjain/dealcheck/main/skills/dealcheck/SKILL.md
-
-# Claude Code (Cursor also loads skills from this folder)
-mkdir -p ~/.claude/skills/dealcheck && curl -fsSL $URL -o ~/.claude/skills/dealcheck/SKILL.md
-
-# Codex, Gemini CLI and GitHub Copilot CLI (one shared folder)
-mkdir -p ~/.agents/skills/dealcheck && curl -fsSL $URL -o ~/.agents/skills/dealcheck/SKILL.md
-```
-
-Or use the [skills](https://github.com/vercel-labs/skills) installer, which knows the folders of many agents:
+### Any agent (one command)
 
 ```
 npx skills add vsheshjain/dealcheck -g
 ```
 
-Restart the agent, then run `/dealcheck` or ask it to "dealcheck" an idea or a listing. Without the pane, the report comes back in the chat as a table.
+The [skills](https://github.com/vercel-labs/skills) installer finds the coding agents on your machine (Claude Code, Codex, Cursor, Gemini CLI, Copilot CLI and more) and lets you pick which ones get the skill. `-g` installs it for all your projects. Needs Node.js 22.20 or later.
+
+Restart the agent, then run `/dealcheck` or ask it to "dealcheck" an idea or a listing. The report comes back in the chat as a table.
+
+### Claude Code, with the pane
+
+The full plugin adds the Dealcheck pane beside the chat. In a Claude Code session, add the marketplace:
+
+```
+/plugin marketplace add vsheshjain/dealcheck
+```
+
+Then install the plugin:
+
+```
+/plugin install dealcheck@dealcheck
+```
+
+Pick the **user** scope to have it in every project. Run it as `/dealcheck:dealcheck`.
+
+### Manual install
+
+The skill is one file, `skills/dealcheck/SKILL.md`, in the open Agent Skills format. Copy it into your agent's skills folder.
+
+**Claude Code** (Cursor also loads skills from this folder):
+
+```
+mkdir -p ~/.claude/skills/dealcheck && curl -fsSL https://raw.githubusercontent.com/vsheshjain/dealcheck/main/skills/dealcheck/SKILL.md -o ~/.claude/skills/dealcheck/SKILL.md
+```
+
+**Codex, Gemini CLI and GitHub Copilot CLI** (one shared folder):
+
+```
+mkdir -p ~/.agents/skills/dealcheck && curl -fsSL https://raw.githubusercontent.com/vsheshjain/dealcheck/main/skills/dealcheck/SKILL.md -o ~/.agents/skills/dealcheck/SKILL.md
+```
 
 ## Use
 
 ```
-/dealcheck:dealcheck A Chrome extension that schedules LinkedIn posts for agencies
-/dealcheck:dealcheck https://trustmrr.com/startup/some-startup
-/dealcheck:dealcheck https://acquire.com/startup/...
+/dealcheck A Chrome extension that schedules LinkedIn posts for agencies
+/dealcheck https://trustmrr.com/startup/some-startup
+/dealcheck https://acquire.com/startup/...
 ```
 
-With the skill-only install, use `/dealcheck` instead. Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
+With the Claude Code plugin, the command is `/dealcheck:dealcheck`. Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
 
 - **Speed:** for an idea, how fast you can ship something to sell; for a business, how fast a new owner can improve it.
 - **Upfront investment:** for an idea, the cost to launch; for a business, whether the asking price is fair compared with similar deals.
