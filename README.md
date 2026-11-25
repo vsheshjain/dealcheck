@@ -34,22 +34,22 @@ A check runs 10 to 25 web lookups and takes a few minutes.
 While Claude researches, the pane lists each search it runs. When it finishes, the pane shows the report:
 
 ```
-Magic Marketer
+PostPilot (example)
 45/100  Walk away  · acquisition
 
-Walk away unless it's very cheap. 11 customers, no proven acquisition
-channel and strong free competition from Canva and Meta.
+Walk away unless it's very cheap. Few customers, no proven acquisition
+channel and strong free competition from big design platforms.
 
 ███░░░░░░░  3 Urgency · medium
-Making social posts faster is nice to have; Canva is a cheap substitute.
-↳ Canva Pro bundles AI design tools for about $15/month
+Making social posts faster is nice to have; cheaper substitutes exist.
+↳ Leading design tools bundle AI features for about $15/month
 ███████░░░  7 Market size · medium
 AI social media tools are a multi-billion-dollar market growing 20–30% a year.
-↳ AI in social media market estimated at about $3.42B in 2026
+↳ AI in social media market estimated at several billion dollars in 2026
 ...
 
 Red flags
-• Only 11 paying subscribers after about 18 months.
+• Only a dozen paying subscribers after about 18 months.
 • The founder says they are moving on.
 
 Ask the seller
