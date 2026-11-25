@@ -89,6 +89,12 @@ claude plugin validate .
 claude plugin test .
 ```
 
+## Credits
+
+The ten factors come from "10 Ways to Evaluate a Market" in
+[The Personal MBA](https://personalmba.com/10-ways-to-evaluate-a-market/)
+by Josh Kaufman. Dealcheck is an independent project, not affiliated with him.
+
 ## Disclaimer
 
 AI research can be wrong. This is not financial or legal advice. Verify before you build or buy.
