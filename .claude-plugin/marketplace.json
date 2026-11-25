@@ -1,0 +1,6 @@
+{
+  "name": "dealcheck",
+  "description": "Score a startup idea or a business for sale on ten market factors, with sources, in a Claude Code pane.",
+  "owner": { "name": "Vishesh Jain" },
+  "plugins": [{ "name": "dealcheck", "source": "./" }]
+}

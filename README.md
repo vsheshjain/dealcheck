@@ -1,0 +1,98 @@
+# Dealcheck
+
+A Claude Code plugin that tells you whether a startup idea, or a business you want to buy, is worth it.
+
+Give it an idea or a listing link. Claude researches the market on the web and scores it on ten factors: urgency, market size, pricing potential, acquisition cost, delivery cost, uniqueness, speed, upfront investment, upsell potential and evergreen potential. Every score has a reason and a source link. The report opens in a pane beside the chat.
+
+## Install
+
+In a Claude Code terminal session:
+
+```
+/plugin install dealcheck --marketplace vsheshjain/dealcheck
+```
+
+Answer `y` to add the marketplace, then pick a scope (just you, or this project).
+
+## Use
+
+```
+/dealcheck A Chrome extension that schedules LinkedIn posts for agencies
+/dealcheck https://trustmrr.com/startup/some-startup
+/dealcheck https://acquire.com/startup/...
+```
+
+Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
+
+- **Speed:** for an idea, how fast you can ship something to sell; for a business, how fast a new owner can improve it.
+- **Upfront investment:** for an idea, the cost to launch; for a business, whether the asking price is fair compared with similar deals.
+
+A check runs 10 to 25 web lookups and takes a few minutes.
+
+## What you see
+
+While Claude researches, the pane lists each search it runs. When it finishes, the pane shows the report:
+
+```
+Magic Marketer
+45/100  Walk away  · acquisition
+
+Walk away unless it's very cheap. 11 customers, no proven acquisition
+channel and strong free competition from Canva and Meta.
+
+███░░░░░░░  3 Urgency · medium
+Making social posts faster is nice to have; Canva is a cheap substitute.
+↳ Canva Pro bundles AI design tools for about $15/month
+███████░░░  7 Market size · medium
+AI social media tools are a multi-billion-dollar market growing 20–30% a year.
+↳ AI in social media market estimated at about $3.42B in 2026
+...
+
+Red flags
+• Only 11 paying subscribers after about 18 months.
+• The founder says they are moving on.
+
+Ask the seller
+• What is the asking price, and would you take part as an earn-out?
+• Can I see Stripe MRR, churn and refunds month by month?
+
+[p] Older   [n] Newer   1 of 3
+```
+
+Each `↳` line links to its source. In the chat, Claude replies with one short paragraph.
+
+| Score | For an idea | For a business |
+|---|---|---|
+| Under 50 | Drop it | Walk away |
+| 50 to 75 | Test before building | Negotiate with care |
+| Over 75 | Worth building | Promising buy |
+
+A 0 on any one factor can sink it on its own, so the pane flags it.
+
+Past reports stay in the pane for the session; press `p` and `n` to page through them. In a terminal narrower than about 110 columns, the pane waits until you widen the window.
+
+## How it works
+
+The plugin is a Claude Code mod (`hooks/register.tsx`). It adds:
+
+- the `/dealcheck` command, which hands Claude the research brief;
+- a `submit_report` tool, which checks the report has all ten factors, adds up the total and stores it;
+- the Dealcheck pane, which draws the progress and the report.
+
+Research uses Claude Code's own web search and runs on your Claude account. Nothing is sent anywhere else.
+
+## Develop
+
+```
+claude --plugin-dir .
+claude plugin validate .
+claude plugin test .
+```
+
+## Disclaimer
+
+AI research can be wrong. This is not financial or legal advice. Verify before you build or buy.
+
+## License
+
+MIT

@@ -1,0 +1,12 @@
+{
+  "name": "dealcheck",
+  "version": "0.1.0",
+  "description": "Score a startup idea or a business for sale on ten market factors, with a source behind every score, in a pane beside the chat.",
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Vishesh Jain",
+    "url": "https://github.com/vsheshjain"
+  },
+  "repository": "https://github.com/vsheshjain/dealcheck"
+}
