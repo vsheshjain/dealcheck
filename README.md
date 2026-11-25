@@ -14,6 +14,8 @@ In a Claude Code terminal session:
 
 Answer `y` to add the marketplace, then pick a scope (just you, or this project).
 
+**Other agents (Codex, Cursor and others that read Agent Skills):** copy `skills/dealcheck/` into the folder your agent loads skills from. There is no pane outside Claude Code, so the report comes back in the chat as a table.
+
 ## Use
 
 ```
@@ -73,9 +75,9 @@ Past reports stay in the pane for the session; press `p` and `n` to page through
 
 ## How it works
 
-The plugin is a Claude Code mod (`hooks/register.tsx`). It adds:
+The plugin is a skill plus a Claude Code mod (`hooks/register.tsx`). It adds:
 
-- the `/dealcheck` command, which hands Claude the research brief;
+- the `dealcheck` skill (`skills/dealcheck/SKILL.md`), which holds the research brief and starts the check as soon as you run `/dealcheck`;
 - a `submit_report` tool, which checks the report has all ten factors, adds up the total and stores it;
 - the Dealcheck pane, which draws the progress and the report.
 
