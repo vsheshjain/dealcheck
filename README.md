@@ -6,15 +6,23 @@ Give it an idea or a listing link. Claude researches the market on the web and s
 
 ## Install
 
-In a Claude Code terminal session:
+**Full plugin, with the pane (Claude Code).** In a Claude Code terminal session:
 
 ```
 /plugin install dealcheck --marketplace vsheshjain/dealcheck
 ```
 
-Answer `y` to add the marketplace, then pick a scope (just you, or this project).
+Answer `y` to add the marketplace, then pick the **user** scope to have it in every project. Run it as `/dealcheck:dealcheck`.
 
-**Other agents (Codex, Cursor and others that read Agent Skills):** copy `skills/dealcheck/` into the folder your agent loads skills from. There is no pane outside Claude Code, so the report comes back in the chat as a table.
+**Skill only, global (Claude Code, no pane).** In a terminal:
+
+```
+mkdir -p ~/.claude/skills/dealcheck && curl -fsSL https://raw.githubusercontent.com/vsheshjain/dealcheck/main/skills/dealcheck/SKILL.md -o ~/.claude/skills/dealcheck/SKILL.md
+```
+
+Start a new Claude Code session and run it as `/dealcheck`. The report comes back in the chat as a table.
+
+**Other agents (Codex, Cursor and others that read Agent Skills):** put `skills/dealcheck/SKILL.md` in the folder your agent loads skills from. The report comes back in the chat as a table.
 
 ## Use
 
@@ -24,7 +32,7 @@ Answer `y` to add the marketplace, then pick a scope (just you, or this project)
 /dealcheck:dealcheck https://acquire.com/startup/...
 ```
 
-Typing `/dealcheck` finds it in the command list. Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
+With the skill-only install, use `/dealcheck` instead. Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
 
 - **Speed:** for an idea, how fast you can ship something to sell; for a business, how fast a new owner can improve it.
 - **Upfront investment:** for an idea, the cost to launch; for a business, whether the asking price is fair compared with similar deals.
