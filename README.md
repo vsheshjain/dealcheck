@@ -14,15 +14,25 @@ Give it an idea or a listing link. Claude researches the market on the web and s
 
 Answer `y` to add the marketplace, then pick the **user** scope to have it in every project. Run it as `/dealcheck:dealcheck`.
 
-**Skill only, global (Claude Code, no pane).** In a terminal:
+**Skill only, any agent (no pane).** The skill is one file, `skills/dealcheck/SKILL.md`, in the open Agent Skills format. Install it globally for the agents you use:
 
 ```
-mkdir -p ~/.claude/skills/dealcheck && curl -fsSL https://raw.githubusercontent.com/vsheshjain/dealcheck/main/skills/dealcheck/SKILL.md -o ~/.claude/skills/dealcheck/SKILL.md
+URL=https://raw.githubusercontent.com/vsheshjain/dealcheck/main/skills/dealcheck/SKILL.md
+
+# Claude Code (Cursor also loads skills from this folder)
+mkdir -p ~/.claude/skills/dealcheck && curl -fsSL $URL -o ~/.claude/skills/dealcheck/SKILL.md
+
+# Codex, Gemini CLI and GitHub Copilot CLI (one shared folder)
+mkdir -p ~/.agents/skills/dealcheck && curl -fsSL $URL -o ~/.agents/skills/dealcheck/SKILL.md
 ```
 
-Start a new Claude Code session and run it as `/dealcheck`. The report comes back in the chat as a table.
+Or use the [skills](https://github.com/vercel-labs/skills) installer, which knows the folders of many agents:
 
-**Other agents (Codex, Cursor and others that read Agent Skills):** put `skills/dealcheck/SKILL.md` in the folder your agent loads skills from. The report comes back in the chat as a table.
+```
+npx skills add vsheshjain/dealcheck -g
+```
+
+Restart the agent, then run `/dealcheck` or ask it to "dealcheck" an idea or a listing. Without the pane, the report comes back in the chat as a table.
 
 ## Use
 
