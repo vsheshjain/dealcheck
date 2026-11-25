@@ -19,12 +19,12 @@ Answer `y` to add the marketplace, then pick a scope (just you, or this project)
 ## Use
 
 ```
-/dealcheck A Chrome extension that schedules LinkedIn posts for agencies
-/dealcheck https://trustmrr.com/startup/some-startup
-/dealcheck https://acquire.com/startup/...
+/dealcheck:dealcheck A Chrome extension that schedules LinkedIn posts for agencies
+/dealcheck:dealcheck https://trustmrr.com/startup/some-startup
+/dealcheck:dealcheck https://acquire.com/startup/...
 ```
 
-Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
+Typing `/dealcheck` finds it in the command list. Claude decides whether you gave it an **idea** or a **business for sale** and adjusts two factors to match:
 
 - **Speed:** for an idea, how fast you can ship something to sell; for a business, how fast a new owner can improve it.
 - **Upfront investment:** for an idea, the cost to launch; for a business, whether the asking price is fair compared with similar deals.
@@ -77,7 +77,7 @@ Past reports stay in the pane for the session; press `p` and `n` to page through
 
 The plugin is a skill plus a Claude Code mod (`hooks/register.tsx`). It adds:
 
-- the `dealcheck` skill (`skills/dealcheck/SKILL.md`), which holds the research brief and starts the check as soon as you run `/dealcheck`;
+- the `dealcheck` skill (`skills/dealcheck/SKILL.md`), which holds the research brief and starts the check as soon as you run `/dealcheck:dealcheck`;
 - a `submit_report` tool, which checks the report has all ten factors, adds up the total and stores it;
 - the Dealcheck pane, which draws the progress and the report.
 
